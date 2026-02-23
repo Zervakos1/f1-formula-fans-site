@@ -165,20 +165,20 @@ if (tableBody) {
 // FILTERING
 // ===============================
 
-if (filterSelect) {
-    filterSelect.addEventListener("change", function () {
+if (sortSelect) {
+    sortSelect.addEventListener("change", function () {
 
-        let filtered = [...tasks];
+        let sorted = [...tasks];
 
-        if (this.value === "completed") {
-            filtered = tasks.filter(t => t.completed);
+        if (this.value === "name") {
+            sorted.sort((a, b) => a.name.localeCompare(b.name));
         }
 
-        if (this.value === "upcoming") {
-            filtered = tasks.filter(t => !t.completed);
+        if (this.value === "date") {
+            sorted.sort((a, b) => new Date(a.date) - new Date(b.date));
         }
 
-        renderTasks(filtered);
+        renderTasks(sorted);
     });
 }
 
@@ -240,3 +240,4 @@ async function fetchNextRace() {
 }
 
 fetchNextRace();
+renderTasks();
