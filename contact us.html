@@ -3,76 +3,125 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Contact F1 Fan Hub team.">
 <title>Contact - F1 Fan Hub</title>
-<link rel="stylesheet" href="style.css">
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
-<div class="container">
-<a class="navbar-brand fw-bold" href="index.html">🏁 F1 Fan Hub</a>
+  <div class="container">
+    <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">🏁 <span>F1 Fan Hub</span></a>
 
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-<span class="navbar-toggler-icon"></span>
-</button>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<div class="collapse navbar-collapse" id="navMenu">
-<ul class="navbar-nav ms-auto">
-<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-<li class="nav-item"><a class="nav-link" href="tasks.html">Fan Plans</a></li>
-<li class="nav-item"><a class="nav-link" href="analytics.html">Analytics</a></li>
-<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-<li class="nav-item"><a class="nav-link" href="contact us.html">Contact</a></li>
-</ul>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="tasks.html">Fan Plans</a></li>
+        <li class="nav-item"><a class="nav-link" href="analytics.html">Analytics</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="contact us.html">Contact</a></li>
+      </ul>
 
-<button id="darkModeToggle" class="btn btn-dark ms-3">Dark Mode</button>
-</div>
-</div>
+      <button id="darkModeToggle" class="btn btn-dark ms-3" aria-label="Toggle dark mode">Dark Mode</button>
+    </div>
+  </div>
 </nav>
 
-<div class="container mt-5">
-<h2>Contact Us</h2>
+<main class="container my-5">
+  <h1 class="mb-4">Contact Us</h1>
 
-<form class="needs-validation" novalidate>
-<div class="mb-3">
-<input type="text" class="form-control" placeholder="Name" required>
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <form id="contactForm" class="needs-validation" novalidate aria-label="Contact form">
+        <div class="mb-3">
+          <label for="contactName" class="form-label">Name</label>
+          <input type="text" class="form-control" id="contactName" required>
+          <div class="invalid-feedback">Please enter your name.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="contactEmail" class="form-label">Email</label>
+          <input type="email" class="form-control" id="contactEmail" required>
+          <div class="invalid-feedback">Please enter a valid email.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="contactSubject" class="form-label">Subject</label>
+          <input type="text" class="form-control" id="contactSubject" required>
+          <div class="invalid-feedback">Subject is required.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="contactMessage" class="form-label">Message</label>
+          <textarea class="form-control" id="contactMessage" rows="4" required></textarea>
+          <div class="invalid-feedback">Please enter your message.</div>
+        </div>
+
+        <button id="contactSubmitBtn" type="submit" class="btn btn-danger" disabled>Send</button>
+      </form>
+
+      <!-- Social Links -->
+      <div class="mt-4">
+        <h2 class="h5">Follow Us</h2>
+        <div class="d-flex gap-3 flex-wrap">
+          <a class="social-link" href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+          <a class="social-link" href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+          <a class="social-link" href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <h2 class="h5">Our Location</h2>
+     <iframe
+            title="The American College of Greece location"
+            src="https://maps.google.com/maps?q=The%20American%20College%20of%20Greece&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="350"
+            style="border:0;">
+            </iframe>
+    </div>
+  </div>
+</main>
+
+<!-- Confirmation Modal -->
+<div class="modal fade" id="contactConfirmModal" tabindex="-1" aria-labelledby="contactConfirmTitle" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="contactConfirmTitle">Message Sent</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Name:</strong> <span id="confirmName"></span></p>
+        <p><strong>Email:</strong> <span id="confirmEmail"></span></p>
+        <p><strong>Subject:</strong> <span id="confirmSubject"></span></p>
+        <p><strong>Message:</strong></p>
+        <p id="confirmMessage" class="mb-0"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="mb-3">
-<input type="email" class="form-control" placeholder="Email" required>
-</div>
-
-<div class="mb-3">
-<input type="text" class="form-control" placeholder="Subject" required>
-</div>
-
-<div class="mb-3">
-<textarea class="form-control" rows="4" placeholder="Message" required></textarea>
-</div>
-
-<button type="submit" class="btn btn-danger">Send</button>
-</form>
-
-<div class="mt-4">
-<iframe 
-src="https://maps.google.com/maps?q=monaco&t=&z=13&ie=UTF8&iwloc=&output=embed"
-width="100%" height="300" style="border:0;"></iframe>
-</div>
-
-</div>
-
-<script>
-document.querySelector("form").addEventListener("submit", function(e){
-e.preventDefault();
-alert("Thank you for contacting F1 Fan Hub!");
-this.reset();
-});
-</script>
+<footer class="footer mt-5">
+  <div class="container py-4 text-center">
+    <div class="fw-bold">🏁 F1 Fan Hub</div>
+    <small>© 2026 • Email: <a href="mailto:konstantinos@example.com">konstantinos@example.com</a></small>
+  </div>
+</footer>
 
 <script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>

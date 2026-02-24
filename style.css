@@ -106,7 +106,8 @@ input[type="submit"]:hover {
 
 /* Footer */
 footer {
-    background-color: #000;
+    background-color: #f8f9fa;
+    color: #000;
     text-align: center;
     padding: 15px;
     margin-top: 30px;
@@ -141,5 +142,51 @@ body.dark-mode {
 }
 
 .dark-mode footer {
-    background-color: #000 !important;
+    background-color: #000;
+    color: #ffffff;
 }
+
+/* TEAM IMAGE */
+.team-img {
+    height: 450px;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* Carousel image height */
+.carousel-img {
+  height: 420px;
+  object-fit: cover;
+}
+
+.carousel-caption-bg{
+  background: rgba(0,0,0,0.60);
+  padding: 12px 14px;
+  border-radius: 10px;
+  display: inline-block;
+  max-width: 700px;
+}
+
+/* CONTACT CONFIRMATION */
+.modal-content {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.dark-mode .modal-content {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+.modal-header {
+    border-bottom: 2px solid #e10600;
+}
+
+.modal-title {
+    font-weight: 700;
+}
+
+/* Priority colors */
+.priority-high { color: #dc3545; font-weight: 700; }
+.priority-medium { color: #fd7e14; font-weight: 700; }
+.priority-low { color: #198754; font-weight: 700; }

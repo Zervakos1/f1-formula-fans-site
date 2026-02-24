@@ -3,73 +3,92 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Analytics dashboard for F1 Fan Hub tasks.">
 <title>Analytics - F1 Fan Hub</title>
-<link rel="stylesheet" href="style.css">
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
 
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
-<div class="container">
-<a class="navbar-brand fw-bold" href="index.html">🏁 F1 Fan Hub</a>
+  <div class="container">
+    <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">🏁 <span>F1 Fan Hub</span></a>
 
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-<span class="navbar-toggler-icon"></span>
-</button>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<div class="collapse navbar-collapse" id="navMenu">
-<ul class="navbar-nav ms-auto">
-<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-<li class="nav-item"><a class="nav-link" href="tasks.html">Fan Plans</a></li>
-<li class="nav-item"><a class="nav-link" href="analytics.html">Analytics</a></li>
-<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-<li class="nav-item"><a class="nav-link" href="contact us.html">Contact</a></li>
-</ul>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="tasks.html">Fan Plans</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="analytics.html">Analytics</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact us.html">Contact</a></li>
+      </ul>
 
-<button id="darkModeToggle" class="btn btn-dark ms-3">Dark Mode</button>
-</div>
-</div>
+      <button id="darkModeToggle" class="btn btn-dark ms-3" aria-label="Toggle dark mode">Dark Mode</button>
+    </div>
+  </div>
 </nav>
 
-<div class="container mt-5">
-<h2>Fan Analytics Dashboard</h2>
+<main class="container my-5">
+  <h1 class="mb-4">Fan Analytics Dashboard</h1>
 
-<canvas class="mt-4" id="statusChart"></canvas>
-<canvas class="mt-5" id="priorityChart"></canvas>
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <div class="card p-3 shadow-sm">
+        <h2 class="h5">Status Breakdown</h2>
+        <canvas id="statusChart" aria-label="Completed vs Pending chart"></canvas>
+      </div>
+    </div>
 
-</div>
+    <div class="col-lg-6">
+      <div class="card p-3 shadow-sm">
+        <h2 class="h5">Priority Breakdown</h2>
+        <canvas id="priorityChart" aria-label="Priority pie chart"></canvas>
+      </div>
+    </div>
+  </div>
+</main>
 
-<script>
-const storedTasks = JSON.parse(localStorage.getItem("fanTasks")) || [];
-
-const completed = storedTasks.filter(t => t.completed).length;
-const upcoming = storedTasks.length - completed;
-
-const high = storedTasks.filter(t => t.priority === "High").length;
-const medium = storedTasks.filter(t => t.priority === "Medium").length;
-const low = storedTasks.filter(t => t.priority === "Low").length;
-
-new Chart(document.querySelector("#statusChart"), {
-type: 'bar',
-data: {
-labels: ['Completed','Upcoming'],
-datasets: [{ data:[completed, upcoming] }]
-}
-});
-
-new Chart(document.querySelector("#priorityChart"), {
-type: 'pie',
-data: {
-labels: ['High','Medium','Low'],
-datasets: [{ data:[high,medium,low] }]
-}
-});
-</script>
+<footer class="footer mt-5">
+  <div class="container py-4 text-center">
+    <div class="fw-bold">🏁 F1 Fan Hub</div>
+    <small>© 2026 • Email: <a href="mailto:konstantinos@example.com">konstantinos@example.com</a></small>
+  </div>
+</footer>
 
 <script src="script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const storedTasks = JSON.parse(localStorage.getItem("fanTasks") || "[]");
+  const completed = storedTasks.filter(t => t.completed).length;
+  const pending = storedTasks.length - completed;
 
+  const high = storedTasks.filter(t => t.priority === "High").length;
+  const medium = storedTasks.filter(t => t.priority === "Medium").length;
+  const low = storedTasks.filter(t => t.priority === "Low").length;
+
+  new Chart(document.querySelector("#statusChart"), {
+    type: "bar",
+    data: {
+      labels: ["Completed", "Pending"],
+      datasets: [{ label: "Tasks", data: [completed, pending] }]
+    }
+  });
+
+  new Chart(document.querySelector("#priorityChart"), {
+    type: "pie",
+    data: {
+      labels: ["High", "Medium", "Low"],
+      datasets: [{ data: [high, medium, low] }]
+    }
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

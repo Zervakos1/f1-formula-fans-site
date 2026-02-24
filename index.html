@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="F1 Fan Hub - Manage fan events and track upcoming races">
-<title>F1 Fan Hub - Home</title>
+<meta name="description" content="F1 Fan Hub - Plan fan events, track upcoming races, and manage your tasks.">
+<title>Home - F1 Fan Hub</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -13,49 +13,87 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
-<div class="container">
-<a class="navbar-brand fw-bold" href="index.html">🏁 F1 Fan Hub</a>
+  <div class="container">
+    <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html" aria-label="F1 Fan Hub Home">
+      🏁 <span>F1 Fan Hub</span>
+    </a>
 
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-<span class="navbar-toggler-icon"></span>
-</button>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<div class="collapse navbar-collapse" id="navMenu">
-<ul class="navbar-nav ms-auto">
-<li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-<li class="nav-item"><a class="nav-link" href="tasks.html">Fan Plans</a></li>
-<li class="nav-item"><a class="nav-link" href="analytics.html">Analytics</a></li>
-<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-<li class="nav-item"><a class="nav-link" href="contact us.html">Contact</a></li>
-</ul>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="tasks.html">Fan Plans</a></li>
+        <li class="nav-item"><a class="nav-link" href="analytics.html">Analytics</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact us.html">Contact</a></li>
+      </ul>
 
-<button id="darkModeToggle" class="btn btn-dark ms-3">Dark Mode</button>
-</div>
-</div>
+      <button id="darkModeToggle" class="btn btn-dark ms-3" aria-label="Toggle dark mode">Dark Mode</button>
+    </div>
+  </div>
 </nav>
 
-<section class="container text-center mt-5">
-<h1 class="display-4 fw-bold">Welcome F1 Fans!</h1>
-<p class="lead">Plan your watch parties, race meetups, and track the next Grand Prix.</p>
-<a href="tasks.html" class="btn btn-danger btn-lg">Plan Fan Event</a>
-</section>
+<main class="container my-5">
 
-<section class="container mt-5">
-<h2>Next F1 Race</h2>
-<div class="card p-3 shadow">
-<h4 class="race-name"></h4>
-<p class="race-location"></p>
-<p><strong>Date:</strong> <span class="race-date"></span></p>
-</div>
-</section>
+  <!-- Welcome -->
+  <section class="text-center">
+    <h1 class="display-5 fw-bold">Welcome, F1 Fans!</h1>
+    <p class="lead mt-3">
+      F1 Fan Hub helps you plan watch parties, race meetups, and personal fan schedules.
+      Create tasks, set priorities, and track your progress with analytics.
+    </p>
+    <a href="tasks.html" class="btn btn-danger btn-lg mt-2" aria-label="Go to Fan Plans page">Go to Fan Plans</a>
+  </section>
 
-<section class="container mt-5">
-<h2>Latest Fan Activity</h2>
-<ul id="latestActivity" class="list-group"></ul>
-</section>
+  <!-- API: Next Race -->
+  <section class="mt-5">
+    <h2 class="mb-3">Next F1 Race (Live Data)</h2>
+    <div class="card p-3 shadow-sm">
+      <h4 class="race-name mb-1"></h4>
+      <p class="race-location mb-1"></p>
+      <p class="mb-0"><strong>Date:</strong> <span class="race-date"></span></p>
+    </div>
+  </section>
 
-<footer class="bg-dark text-white text-center p-3 mt-5">
-<p>&copy; 2026 F1 Fan Hub</p>
+  <!-- Latest Activity -->
+  <section class="mt-5">
+    <h2 class="mb-3">Latest Activity</h2>
+    <ul id="latestActivity" class="list-group" aria-label="Latest activity list"></ul>
+  </section>
+
+</main>
+
+<footer class="footer mt-5">
+  <div class="container py-4">
+    <div class="row g-3 align-items-center">
+      <div class="col-md-4 text-center text-md-start">
+        <div class="fw-bold">🏁 F1 Fan Hub</div>
+        <small class="text-danger">Plan. Track. Enjoy race weekends.</small>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <small>
+          © 2026 F1 Fan Hub<br>
+          Built by Konstantinos Zervakos
+        </small>
+      </div>
+
+      <div class="col-md-4 text-center text-md-end">
+        <small>
+          Email: <a href="mailto:konstantinos@example.com">konstantinos@example.com</a>
+        </small>
+        <div class="mt-2 d-flex justify-content-center justify-content-md-end gap-3">
+          <a class="social-link" href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+          <a class="social-link" href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+          <a class="social-link" href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <script src="script.js"></script>
