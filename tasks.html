@@ -8,6 +8,8 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
 </head>
 
 <body>
@@ -44,12 +46,12 @@
 
       <div class="col-lg-3 col-md-6">
         <label for="taskName" class="form-label">Task Name</label>
-        <input type="text" id="taskName" class="form-control" required>
+        <input type="text" id="taskName" class="form-control" required maxlength="30">
       </div>
 
       <div class="col-lg-3 col-md-6">
         <label for="taskDesc" class="form-label">Description</label>
-        <input type="text" id="taskDesc" class="form-control" required>
+        <input type="text" id="taskDesc" class="form-control" required maxlength="500">
       </div>
 
       <div class="col-lg-2 col-md-6">
@@ -108,15 +110,23 @@
 
   <section class="mt-4">
     <h2 class="h4">Task List</h2>
-    <div class="table-responsive">
+    <div class="table-responsive" id="taskTableWrap">
       <table class="table table-striped align-middle" id="taskTable" aria-label="Tasks table">
+        <colgroup>
+    <col class="col-task">
+    <col class="col-desc">
+    <col class="col-due">
+    <col class="col-priority">
+    <col class="col-status">
+    <col class="col-actions">
+  </colgroup>
         <thead>
           <tr>
-            <th>Task</th>
-            <th>Description</th>
-            <th>Due</th>
-            <th>Priority</th>
-            <th>Status</th>
+            <th class="text-center">Task</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">Due</th>
+            <th class="text-center">Priority</th>
+            <th class="text-center">Status</th>
             <th class="text-center">Actions</th>
           </tr>
         </thead>
@@ -173,6 +183,22 @@
   </div>
 </div>
 
+<!-- Toast (Notifications) -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="taskToast"
+     class="toast align-items-center border-0"
+     role="alert"
+     aria-live="assertive"
+     aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">F1 Fan Hub</strong>
+      <small class="text-muted">now</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body" id="toastMsg">Action completed.</div>
+  </div>
+</div>
+
 <footer class="footer mt-5">
   <div class="container py-4 text-center">
     <div class="fw-bold">🏁 F1 Fan Hub</div>
@@ -180,7 +206,5 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
